@@ -153,6 +153,18 @@ public final class AlertController: UIViewController {
         self.attributedMessage = attributedMessage
     }
 
+    @objc
+    public convenience init(attributedTitle: NSAttributedString?, attributedMessage: NSAttributedString?,
+        preferredStyle: AlertControllerStyle = .alert, visualStyle: AlertVisualStyle)
+    {
+        self.init(preferredStyle: preferredStyle)
+        self.visualStyle = visualStyle
+        self.commonInit()
+
+        self.attributedTitle = attributedTitle
+        self.attributedMessage = attributedMessage
+    }
+    
     /// Creates an alert with a plain title and message. To add styles to the title or message, use
     /// `init(attributedTitle:attributedMessage:)`.
     ///
@@ -169,6 +181,17 @@ public final class AlertController: UIViewController {
         self.message = message
     }
 
+    @objc
+    public convenience init(title: String?, message: String?, preferredStyle: AlertControllerStyle = .alert, visualStyle: AlertVisualStyle)
+    {
+        self.init(preferredStyle: preferredStyle)
+        self.visualStyle = visualStyle
+        self.commonInit()
+
+        self.title = title
+        self.message = message
+    }
+    
     private init(preferredStyle: AlertControllerStyle) {
         switch preferredStyle {
         case .alert:
